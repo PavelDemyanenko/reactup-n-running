@@ -11,16 +11,15 @@
     <script src="react/build/react.js"></script>
     <script>
       // my app's code
-      var Component = React.createClass({
-        render: function() {
-          return React.DOM.span(null, "I'm so custom");
-        }
+      var Component = React.createClass({ render: function() {
+        return React.DOM.span(null, "My name is " + this.props.name); }
       });
       React.render(
-        React.createElement(Component),
+        React.createElement(Component, {
+          name: "Pavel"
+        }),
         document.getElementById("app")
       );
-
     </script>
   </body>
 </html>
