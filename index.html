@@ -11,16 +11,18 @@
     <script src="react/build/react.js"></script>
     <script>
       // my app's code
-      var Component = React.createClass({ propTypes: {
-          name: React.PropTypes.string.isRequired
+      var TextAreaCounter = React.createClass({ propTypes: {
+          text: React.PropTypes.string
         },
         render: function() {
-          return React.DOM.span(null, "My name is " + this.props.name);
+          return React.DOM.div(null,
+          React.DOM.textarea({ defaultValue: this.props.text}),
+          React.DOM.h3(null, this.props.text.length) );
         }
       });
       React.render(
-        React.createElement(Component, {
-          name: "Pavel"
+        React.createElement(TextAreaCounter, {
+          text: "Pavel"
         }),
         document.getElementById("app")
       );
