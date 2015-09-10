@@ -11,8 +11,12 @@
     <script src="react/build/react.js"></script>
     <script>
       // my app's code
-      var Component = React.createClass({ render: function() {
-        return React.DOM.span(null, "My name is " + this.props.name); }
+      var Component = React.createClass({ propTypes: {
+          name: React.PropTypes.string.isRequired
+        },
+        render: function() {
+          return React.DOM.span(null, "My name is " + this.props.name);
+        }
       });
       React.render(
         React.createElement(Component, {
