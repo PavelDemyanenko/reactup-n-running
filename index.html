@@ -13,14 +13,20 @@
         // my app's code
         var TextAreaCounter = React.createClass({
             propTypes: {
-                text: React.PropTypes.string
+                defaultValue: React.PropTypes.string
             },
-            getInitialState: function() {
-                return {
-                    text: this.props.text
-                };
+            _log: function(methodName, args) {
+                console.log(methodName, args);
             },
+            componentWillUpdate: function() {this._log('componentWillUpdate', arguments);},
+            componentDidUpdate: function() {this._log('componentDidUpdate', arguments);},
+            componentWillMount: function() {this._log('componentWillMount', arguments);},
+            componentDidMount: function() {this._log('componentDidMount', arguments);},
+            componentWillUnmount: function() {this._log('componentWillUnmount', arguments);},
             // event listener
+            getInitialState: function() { return {
+                text: this.props.defaultValue, };
+            },
             _textChange: function(ev) {
                 this.setState({
                     text: ev.target.value
@@ -38,7 +44,7 @@
         });
         React.render(
             React.createElement(TextAreaCounter, {
-              text: "Pavel"
+              defaultValue: "xeLL"
             }),
             document.getElementById("app")
         );
